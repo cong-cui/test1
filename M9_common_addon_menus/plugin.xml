@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+ @file M9_common addon_menus
+ @brief メニュー定義
+ @version 1.0.0.0
+ @date 2017/05/22
+ @author ISID Hirayama
+-->
+
+<plugin>
+	<!--コマンド定義-->
+	<extension point="org.eclipse.ui.commands">
+		<!--モデルアイテム作成-->	
+		<command name="モデルアイテム作成" id="M9.common.commands.F01"/>	
+		<!--解析アイテム作成-->
+		<command name="解析アイテム作成" id="M9.common.commands.F02"/>			  
+		<!--CAEデータ登録 -->
+		<command name="CAEデータ登録" id="M9.common.commands.F03"/>
+		<!--CAEデータ取出-->
+		<command name="CAEデータ取出" id="M9.common.commands.F04"/>
+		<!--フォルダ作成-->
+		<command name="フォルダ作成" id="M9.common.commands.F00"/>
+		<!--ゴミ箱へ送る-->
+		<command name="ゴミ箱へ送る" id="M9.common.commands.F06"/>
+		<!--CATIAデータエクスポート-->
+		<command name="CATIAデータエクスポート" id="M9.common.commands.F07"/>			
+	</extension>
+
+	<!--メニュー定義-->
+	<!--メインメニュー-->
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+			<menu
+				label="MMC Custom"
+				id="MenuWindowSurvey.menus.sampleMenu">
+
+				<!-- メニューコマンド定義 -->
+				<!--モデルアイテム作成-->	
+				<command commandId="M9.common.commands.F01" label="モデルアイテム作成" />
+				<!--解析アイテム作成-->
+				<command commandId="M9.common.commands.F02" label="解析アイテム作成" />
+				<!--CAEデータ登録-->
+				<command commandId="M9.common.commands.F03" label="CAEデータ登録" />	
+				<!--CAEデータ取出-->
+				<command commandId="M9.common.commands.F04" label="CAEデータ取出" />				
+				<!--フォルダ作成-->
+				<command commandId="M9.common.commands.F00" label="フォルダ作成" />				
+				<!--ゴミ箱へ送る-->
+				<command commandId="M9.common.commands.F06" label="ゴミ箱へ送る" />
+				<!--CATIAデータエクスポート-->
+				<command commandId="M9.common.commands.F07" label="CATIAデータエクスポート" />
+			</menu>
+		</menuContribution>
+	</extension>
+ 		  
+	<!--共通設定-->
+	<extension point="org.eclipse.core.expressions.definitions">
+	
+		<!--解析アイテム作成のコマンドサプレッション設定-->
+	    <definition id="M9.common.commands.F02.suppression">
+			<with variable="rac_command_suppression">
+				<not>
+					<iterate operator="or">
+						<equals value="M9.common.commands.F02"/>
+					</iterate>
+				</not>
+			</with>
+    	</definition>
+
+		<!--CAEデータ登録のコマンドサプレッション設定-->
+	    <definition id="M9.common.commands.F03.suppression">
+			<with variable="rac_command_suppression">
+				<not>
+					<iterate operator="or">
+						<equals value="M9.common.commands.F03"/>
+					</iterate>
+				</not>
+			</with>
+    	</definition>
+
+		<!--CAEデータ取出のコマンドサプレッション設定-->
+	    <definition id="M9.common.commands.F04.suppression">
+			<with variable="rac_command_suppression">
+				<not>
+					<iterate operator="or">
+						<equals value="M9.common.commands.F04"/>
+					</iterate>
+				</not>
+			</with>
+    	</definition>
+    	
+ 		<!--フォルダ作成のコマンドサプレッション設定-->
+	    <definition id="M9.common.commands.F00.suppression">
+			<with variable="rac_command_suppression">
+				<not>
+					<iterate operator="or">
+						<equals value="M9.common.commands.F00"/>
+					</iterate>
+				</not>
+			</with>
+    	</definition>
+    	
+    	<!--モデルアイテム作成のコマンドサプレッション設定-->
+	    <definition id="M9.common.commands.F01.suppression">
+			<with variable="rac_command_suppression">
+				<not>
+					<iterate operator="or">
+						<equals value="M9.common.commands.F01"/>
+					</iterate>
+				</not>
+			</with>
+    	</definition>
+    	
+    	<!--ゴミ箱へ送るのコマンドサプレッション設定-->
+	    <definition id="M9.common.commands.F06.suppression">
+			<with variable="rac_command_suppression">
+				<not>
+					<iterate operator="or">
+						<equals value="M9.common.commands.F06"/>
+					</iterate>
+				</not>
+			</with>
+    	</definition>
+  	
+  	  	<!--CATIAエクスポートのコマンドサプレッション設定-->
+	    <definition id="M9.common.commands.F07.suppression">
+			<with variable="rac_command_suppression">
+				<not>
+					<iterate operator="or">
+						<equals value="M9.common.commands.F07"/>
+					</iterate>
+				</not>
+			</with>
+    	</definition>
+  	</extension>
+  	
+	<!--ハンドラー定義-->
+<!--
+	<extension point="org.eclipse.ui.handlers">		
+	</extension>
+-->
+</plugin>
